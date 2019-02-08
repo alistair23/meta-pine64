@@ -1,0 +1,12 @@
+#
+# The disk layout used is:
+#
+#    0                   -> reserverd
+#    8 KiB               -> u-boot SPL and u-boot
+#    20480 KiB           -> kernel, dtbs, boot script
+#    20480 KiB + 50 MiB  -> rootfs
+#
+
+part spl --source rawcopy --sourceparams="file=u-boot-sunxi-with-spl.bin" --ondisk mmcblk --no-table --align 8
+part /boot --source bootimg-partition --ondisk mmcblk --fstype=vfat --label pine64 --active --size=100M --align 20480
+part / --source rootfs --ondisk mmcblk --fstype=ext4 --label platform --align 4096
