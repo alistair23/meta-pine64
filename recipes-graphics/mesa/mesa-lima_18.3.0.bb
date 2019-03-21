@@ -2,7 +2,7 @@ require recipes-graphics/mesa/mesa.inc
 
 BRANCH = "lima-18.3"
 
-SRCREV = "8e713e4781982c700bfc7b09279146189d525a86"
+SRCREV = "00d67e27d9548eefb9d5e89b896d4b719adeed3b"
 SRC_URI = "git://gitlab.freedesktop.org/lima/mesa.git;branch=${BRANCH} \
 "
 
