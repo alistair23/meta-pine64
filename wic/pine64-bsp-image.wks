@@ -8,5 +8,5 @@
 #
 
 part spl --source rawcopy --sourceparams="file=u-boot-sunxi-with-spl.bin" --ondisk mmcblk --no-table --align 8
-part /boot --source bootimg-partition --ondisk mmcblk --fstype=vfat --label pine64 --active --size=100M --align 20480
-part / --source rootfs --ondisk mmcblk --fstype=ext4 --label platform --align 4096
+part /boot --source bootimg-partition --ondisk mmcblk0 --fstype=vfat --label pine64 --active --size=100M --align 20480
+part / --source rootfs --ondisk mmcblk0 --fstype=ext4 --label platform --align 4096
