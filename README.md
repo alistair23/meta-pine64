@@ -39,11 +39,6 @@ DISTRO_FEATURES += "systemd"
 VIRTUAL-RUNTIME_init_manager = "systemd"
 DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
 ```
-
-Unfortunately systemd will fail to boot as the /etc/fstab flie is corrupted.
-From the systemd recovery you can manually edit the /etc/fstab file to remove
-the last line. Currently looking for a better fix.
-
 ### Connecting to WiFi
 
 To use WiFi add this to your local.conf:
@@ -72,4 +67,8 @@ To use X11 as well add this to your local.conf as well:
 
 ```
 DISTRO_FEATURES += "x11"
+```
+Then build X11 using:
+
+```MACHINE=sopine-a64 bitbake core-image-x11
 ```
