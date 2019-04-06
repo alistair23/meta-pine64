@@ -27,7 +27,8 @@ Follow the usual steps to setup OpenEmbedded and bitbake.
 
 ### SoPine
 
-```MACHINE=sopine-a64 bitbake core-image-base
+```
+MACHINE=sopine-a64 bitbake core-image-base
 ```
 
 ### Using systemd instead of SysVinit
@@ -48,6 +49,16 @@ DISTRO_FEATURES += "ipv4 ipv6 wifi"
 IMAGE_INSTALL_append = "linux-firmware-rtl8723bs"
 IMAGE_INSTALL_append = " dhcp-client"
 ```
+
+### Displaying the kernel boot log on HDMI
+
+To see the kernel boot log on the HDMI output, which is useful for debugging, change `recipes-bsp/u-boot/files/boot.txt` to the following:
+
+```
+setenv bootargs console=tty0 console=ttyS0,115200 root=/dev/mmcblk0p2 rootwait
+```
+
+This results in adding `console=tty0` which will direct Linux to display the console on the display.
 
 ### Graphical display
 
@@ -70,5 +81,6 @@ DISTRO_FEATURES += "x11"
 ```
 Then build X11 using:
 
-```MACHINE=sopine-a64 bitbake core-image-x11
+```
+MACHINE=sopine-a64 bitbake core-image-x11
 ```
