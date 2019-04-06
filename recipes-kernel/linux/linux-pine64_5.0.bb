@@ -10,7 +10,7 @@ LINUX_VERSION ?= "5.0"
 LINUX_VERSION_EXTENSION = "-pine64"
 
 BRANCH = "sunxi64-5.0"
-SRCREV = "b9b3731fff24914b2de270c0bbe3795e2922a97e"
+SRCREV = "7e50bbc07bee10a663b08ab9e6e2083c2ddf2117"
 SRC_URI = " \
           git://github.com/anarsoul/linux-2.6.git;branch=${BRANCH} \
           file://defconfig \
