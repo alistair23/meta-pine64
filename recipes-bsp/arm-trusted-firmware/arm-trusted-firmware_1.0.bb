@@ -7,7 +7,7 @@ inherit deploy
 PROVIDES = "virtual/arm-trusted-firmware"
 
 BRANCH = "allwinner"
-SRCREV ?= "${AUTOREV}"
+SRCREV ?= "07c0a1e6c98d7f255fbd3560835e939bc455f492"
 SRC_URI = "git://github.com/anarsoul/arm-trusted-firmware.git;protocol=git;branch=${BRANCH}"
 
 S = "${WORKDIR}/git"
