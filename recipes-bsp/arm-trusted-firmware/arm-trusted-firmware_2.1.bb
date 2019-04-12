@@ -1,20 +1,21 @@
-DESCRIPTION = "ARM Trusted Firmware"
-LICENSE = "BSD"
-LIC_FILES_CHKSUM = 'file://license.md;md5=829bdeb34c1d9044f393d5a16c068371'
+SUMMARY = "Arm Trusted Firmware (ATF)"
+DESCRIPTION = "Trusted Firmware-A (TF-A) provides a reference implementation of secure world software for Armv7-A and Armv8-A, including a Secure Monitor executing at Exception Level 3 (EL3)."
+LICENSE = "BSD-3-Clause"
+LIC_FILES_CHKSUM = 'file://license.rst;md5=c709b197e22b81ede21109dbffd5f363'
 
 inherit deploy
 
 PROVIDES = "virtual/arm-trusted-firmware"
 
-BRANCH = "allwinner"
-SRCREV ?= "07c0a1e6c98d7f255fbd3560835e939bc455f492"
-SRC_URI = "git://github.com/anarsoul/arm-trusted-firmware.git;protocol=git;branch=${BRANCH}"
+BRANCH = "master"
+SRCREV ?= "ee80da114b9da8bd48e82ad0187c6534a2f11e71"
+SRC_URI = "git://github.com/ARM-software/arm-trusted-firmware.git;protocol=git;branch=${BRANCH}"
 
 S = "${WORKDIR}/git"
 
 COMPATIBLE_MACHINE = "pine64|sopine-a64"
 PLATFORM_pine64 = "sun50i_a64"
-PLATFORM_sopine-a64 = "sun50iw1p1"
+PLATFORM_sopine-a64 = "sun50i_a64"
 
 # Let the Makefile handle setting up the CFLAGS and LDFLAGS as it is a standalone application
 CFLAGS[unexport] = "1"
@@ -38,4 +39,5 @@ do_deploy() {
 	install -m 0644 ${S}/${PLATFORM}/release/bl31/bl31.elf ${DEPLOYDIR}/bl31-${MACHINE}.elf
 	install -m 0644 ${S}/${PLATFORM}/release/bl31.bin ${DEPLOYDIR}/bl31-${MACHINE}.bin
 }
+
 addtask deploy before do_build after do_compile
