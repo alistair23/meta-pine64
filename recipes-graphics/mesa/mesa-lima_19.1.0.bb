@@ -1,9 +1,8 @@
 require recipes-graphics/mesa/mesa.inc
 
 BRANCH = "master"
-SRCREV = "6ec9733b9f16e94dc3b3a0e6f9e88bced6955e86"
-SRC_URI = "git://gitlab.freedesktop.org/mesa/mesa.git;branch=${BRANCH} \
-"
+SRCREV = "de0c97c8171f8a8183b94d8ac6997117c4671da8"
+SRC_URI = "git://gitlab.freedesktop.org/mesa/mesa.git;branch=${BRANCH}"
 
 S = "${WORKDIR}/git"
 
