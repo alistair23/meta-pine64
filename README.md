@@ -47,7 +47,6 @@ To use WiFi add this to your local.conf:
 ```
 DISTRO_FEATURES += "ipv4 ipv6 wifi"
 IMAGE_INSTALL_append = "linux-firmware-rtl8723bs"
-IMAGE_INSTALL_append = " dhcp-client"
 ```
 
 ### Displaying the kernel boot log on HDMI
@@ -66,12 +65,13 @@ To use Wayland graphics add this to your local.conf:
 
 ```
 DISTRO_FEATURES += "wayland opengl"
-PACKAGECONFIG_append_pn-virtual/mesa = "gallium sun4i"
+PACKAGECONFIG_append_pn-virtual/mesa = "gallium lima"
 ```
 
 Then build Weston using:
 
-```MACHINE=sopine-a64 bitbake core-image-weston
+```
+MACHINE=sopine-a64 bitbake core-image-weston
 ```
 
 To use X11 as well add this to your local.conf as well:
