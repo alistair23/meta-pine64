@@ -10,9 +10,9 @@ LINUX_VERSION ?= "5.2"
 LINUX_VERSION_EXTENSION = "-pine64"
 
 BRANCH = "sunxi64-5.2"
-SRCREV = "b82ed8944bb22eadb789e8b3b0f5935dacfc9dea"
+SRCREV = "3c0ea3bedc07d93945ddc50e8bac7bdae30df08a"
 SRC_URI = " \
-           git://github.com/alistair23/linux.git;branch=${BRANCH} \
+           git://github.com/anarsoul/linux-2.6.git;branch=${BRANCH} \
            file://extra.cfg \
 	  "
 
