@@ -2,7 +2,7 @@ DESCRIPTION = "Firmware files for RTL8723BS and RTL8723CS"
 LICENSE = "Proprietary"
 LIC_FILES_CHKSUM = "file://README.md;md5=779f37dae32d47374b491836b4c5d94d"
 
-COMPATIBLE_MACHINE = "sopine-a64"
+COMPATIBLE_MACHINE = "pine-a64-lts|sopine-a64"
 
 inherit module
 

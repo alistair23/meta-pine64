@@ -25,11 +25,23 @@ This layer depends on:
 
 Follow the usual steps to setup OpenEmbedded and bitbake.
 
-### SoPine
+### Pine A64-LTS
+
+I don't have a board to test on, so this board is supported as best I can. If you have any problems please raise an issue on GitHub.
+
+```
+MACHINE=pine-a64-lts bitbake core-image-base
+```
+
+### SoPine Baseboard
 
 ```
 MACHINE=sopine-a64 bitbake core-image-base
 ```
+
+### Other Pine64 Boards
+
+Please raise a GitHub issue if you would like another board suppoted.
 
 ### Using systemd instead of SysVinit
 
