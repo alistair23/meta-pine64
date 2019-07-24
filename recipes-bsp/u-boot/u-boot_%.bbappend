@@ -1,6 +1,6 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
-SRC_URI += "file://boot.txt \
+SRC_URI += "file://${MACHINE}.txt \
 	   "
 
 DEPENDS += "arm-trusted-firmware u-boot-tools-native"
@@ -13,7 +13,7 @@ do_configure_prepend() {
     fi
 
     mkimage -A arm -O linux -T script -C none -n "U-Boot boot script" \
-        -d ${WORKDIR}/boot.txt ${WORKDIR}/boot.scr
+        -d ${WORKDIR}/${MACHINE}.txt ${WORKDIR}/boot.scr
 }
 
 FILES_${PN} += "/boot/boot.scr"
