@@ -3,7 +3,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 SRC_URI += "file://boot.txt \
 	   "
 
-DEPENDS += "arm-trusted-firmware u-boot-tools-native"
+DEPENDS += "arm-trusted-firmware u-boot-mkimage-native"
 
 do_configure[depends] += "arm-trusted-firmware:do_deploy"
 
