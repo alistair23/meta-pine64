@@ -15,10 +15,10 @@ avoiding custom forks and binary solutions.
 This layer depends on:
 
 * URI: git://github.com/openembedded/openembedded-core
-  * branch: master
+  * branch: thud
   * revision: HEAD
 * URI: git://github.com/openembedded/bitbake
-  * branch: master
+  * branch: 1.42
   * revision: HEAD
 
 ## Building
