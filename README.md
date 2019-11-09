@@ -48,9 +48,7 @@ Please raise a GitHub issue if you would like another board suppoted.
 To use systemd add this to your local.conf:
 
 ```
-DISTRO_FEATURES += "systemd"
-VIRTUAL-RUNTIME_init_manager = "systemd"
-DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
+INIT_MANAGER = "systemd"
 ```
 ### Connecting to WiFi
 
@@ -58,7 +56,7 @@ To use WiFi add this to your local.conf:
 
 ```
 DISTRO_FEATURES += "ipv4 ipv6 wifi"
-IMAGE_INSTALL_append = "linux-firmware-rtl8723bs"
+IMAGE_INSTALL_append = "linux-firmware-rtl8723 wpa-supplicant"
 ```
 
 ### Displaying the kernel boot log on HDMI
@@ -77,7 +75,7 @@ To use Wayland graphics add this to your local.conf:
 
 ```
 DISTRO_FEATURES += "wayland opengl"
-PACKAGECONFIG_append_pn-virtual/mesa = "gallium lima"
+PACKAGECONFIG_append_pn-mesa = " gallium lima kmsro"
 ```
 
 Then build Weston using:
@@ -86,13 +84,8 @@ Then build Weston using:
 MACHINE=sopine-a64 bitbake core-image-weston
 ```
 
-To use X11 as well add this to your local.conf as well:
+To add X11 support as well add this to your local.conf:
 
 ```
 DISTRO_FEATURES += "x11"
-```
-Then build X11 using:
-
-```
-MACHINE=sopine-a64 bitbake core-image-x11
 ```
