@@ -69,7 +69,7 @@ setenv bootargs console=tty0 console=ttyS0,115200 root=/dev/mmcblk0p2 rootwait
 
 This results in adding `console=tty0` which will direct Linux to display the console on the display.
 
-### Graphical display
+### Graphical display over HDMI or MIPI DSI
 
 To use Wayland graphics add this to your local.conf:
 
@@ -89,3 +89,7 @@ To add X11 support as well add this to your local.conf:
 ```
 DISTRO_FEATURES += "x11"
 ```
+
+## Demos
+
+Below are some demos of this layer being used with Pine64 boards.
