@@ -6,14 +6,13 @@ LIC_FILES_CHKSUM = "file://${S}/COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
 inherit kernel
 require recipes-kernel/linux/linux-yocto.inc
 
-LINUX_VERSION ?= "5.6"
+LINUX_VERSION ?= "5.7"
 LINUX_VERSION_EXTENSION = "-pine64"
-KERNEL_VERSION_SANITY_SKIP="1"
 
 PV = "${LINUX_VERSION}+git${SRCPV}"
 
-BRANCH = "alistair/sunxi64-5.6-dsi"
-SRCREV = "86762509858c418194fadf08f00506b5f8c1038d"
+BRANCH = "alistair/sunxi64-5.7-dsi"
+SRCREV = "ae03bade3b53983ed4be0282fb37a36017880867"
 SRC_URI = "git://github.com/alistair23/linux.git;branch=${BRANCH} \
            file://extra.cfg \
            file://screen.cfg \
