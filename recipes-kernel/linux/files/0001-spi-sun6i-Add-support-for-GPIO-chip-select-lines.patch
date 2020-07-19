@@ -1,0 +1,31 @@
+From 7bd5e66a27bf023585a334a998d0fbd7184c1683 Mon Sep 17 00:00:00 2001
+From: Alistair Francis <alistair@alistair23.me>
+Date: Fri, 1 May 2020 18:04:26 -0700
+Subject: [PATCH v2] spi: sun6i: Add support for GPIO chip select lines
+
+Set use_gpio_descriptors as true to support using generic GPIO
+lines for the chip select.
+
+Signed-off-by: Alistair Francis <alistair@alistair23.me>
+---
+v2:
+ - Use use_gpio_descriptors instead of spi_setup
+
+ drivers/spi/spi-sun6i.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/spi/spi-sun6i.c b/drivers/spi/spi-sun6i.c
+index ec7967be9e2f..ecea15534c42 100644
+--- a/drivers/spi/spi-sun6i.c
++++ b/drivers/spi/spi-sun6i.c
+@@ -470,6 +470,7 @@ static int sun6i_spi_probe(struct platform_device *pdev)
+ 
+ 	master->max_speed_hz = 100 * 1000 * 1000;
+ 	master->min_speed_hz = 3 * 1000;
++	master->use_gpio_descriptors = true;
+ 	master->set_cs = sun6i_spi_set_cs;
+ 	master->transfer_one = sun6i_spi_transfer_one;
+ 	master->num_chipselect = 4;
+-- 
+2.26.2
+

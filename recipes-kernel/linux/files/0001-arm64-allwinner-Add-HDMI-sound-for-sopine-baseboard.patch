@@ -1,0 +1,100 @@
+From 4e47dc3dcb0d282e54548c96af4ee55f837949dc Mon Sep 17 00:00:00 2001
+From: Vasily Khoruzhick <anarsoul@gmail.com>
+Date: Sun, 3 Dec 2017 11:43:08 -0800
+Subject: [PATCH 1/5] arm64: allwinner: Add HDMI sound for sopine baseboard
+
+Signed-off-by: Vasily Khoruzhick <anarsoul@gmail.com>
+Signed-off-by: Alistair Francis <alistair@alistair23.me>
+---
+ .../allwinner/sun50i-a64-sopine-baseboard.dts | 12 ++++++++
+ arch/arm64/boot/dts/allwinner/sun50i-a64.dtsi | 30 +++++++++++++++++++
+ 2 files changed, 42 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/allwinner/sun50i-a64-sopine-baseboard.dts b/arch/arm64/boot/dts/allwinner/sun50i-a64-sopine-baseboard.dts
+index 2f6ea9f3f6a2..b3345d384d92 100644
+--- a/arch/arm64/boot/dts/allwinner/sun50i-a64-sopine-baseboard.dts
++++ b/arch/arm64/boot/dts/allwinner/sun50i-a64-sopine-baseboard.dts
+@@ -96,6 +96,10 @@ hdmi_out_con: endpoint {
+ 	};
+ };
+ 
++&i2s2 {
++	status = "okay";
++};
++
+ &mdio {
+ 	ext_rgmii_phy: ethernet-phy@1 {
+ 		compatible = "ethernet-phy-ieee802.3-c22";
+@@ -168,6 +172,14 @@ &sound {
+ 	status = "okay";
+ };
+ 
++&sound_hdmi {
++	status = "okay";
++};
++
++&ths {
++	status = "okay";
++};
++
+ &uart0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&uart0_pb_pins>;
+diff --git a/arch/arm64/boot/dts/allwinner/sun50i-a64.dtsi b/arch/arm64/boot/dts/allwinner/sun50i-a64.dtsi
+index 8dfbcd144072..4105018d0097 100644
+--- a/arch/arm64/boot/dts/allwinner/sun50i-a64.dtsi
++++ b/arch/arm64/boot/dts/allwinner/sun50i-a64.dtsi
+@@ -868,6 +868,19 @@ codec: codec@1c22e00 {
+ 			status = "disabled";
+ 		};
+ 
++		i2s2: i2s@1c22800 {
++			#sound-dai-cells = <0>;
++			compatible = "allwinner,sun8i-h3-i2s";
++			reg = <0x01c22800 0x400>;
++			interrupts = <GIC_SPI 15 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&ccu CLK_BUS_I2S2>, <&ccu CLK_I2S2>;
++			clock-names = "apb", "mod";
++			dmas = <&dma 27>;
++			resets = <&ccu RST_BUS_I2S2>;
++			dma-names = "tx";
++			status = "disabled";
++		};
++
+ 		ths: thermal-sensor@1c25000 {
+ 			compatible = "allwinner,sun50i-a64-ths";
+ 			reg = <0x01c25000 0x100>;
+@@ -1141,6 +1154,7 @@ deinterlace: deinterlace@1e00000 {
+ 		};
+ 
+ 		hdmi: hdmi@1ee0000 {
++			#sound-dai-cells = <0>;
+ 			compatible = "allwinner,sun50i-a64-dw-hdmi",
+ 				     "allwinner,sun8i-a83t-dw-hdmi";
+ 			reg = <0x01ee0000 0x10000>;
+@@ -1184,6 +1198,22 @@ hdmi_phy: hdmi-phy@1ef0000 {
+ 			#phy-cells = <0>;
+ 		};
+ 
++		sound_hdmi: sound_hdmi {
++			compatible = "simple-audio-card";
++			simple-audio-card,format = "i2s";
++			simple-audio-card,name = "allwinner,hdmi";
++			simple-audio-card,mclk-fs = <256>;
++			status = "disabled";
++
++			simple-audio-card,codec {
++				sound-dai = <&hdmi>;
++			};
++
++			simple-audio-card,cpu {
++				sound-dai = <&i2s2>;
++			};
++		};
++
+ 		rtc: rtc@1f00000 {
+ 			compatible = "allwinner,sun50i-a64-rtc",
+ 				     "allwinner,sun8i-h3-rtc";
+-- 
+2.27.0
+
