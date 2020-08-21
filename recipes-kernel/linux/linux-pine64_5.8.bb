@@ -21,6 +21,7 @@ SRC_URI = "git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git;branch
            file://0003-arm64-allwinner-pine64-Enable-Bluetooth-and-WiFi.patch \
            file://0004-arm64-allwinner-sopine-baseboard-Enable-FeiyangFY070.patch \
            file://0005-arm64-allwinner-sopine-baseboard-Enable-I2C-touchscr.patch \
+           file://0001-Revert-module-Harden-STRICT_MODULE_RWX.patch \
            file://extra.cfg \
            file://screen.cfg \
 	  "

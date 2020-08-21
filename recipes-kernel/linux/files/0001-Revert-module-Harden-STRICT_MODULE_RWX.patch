@@ -1,0 +1,66 @@
+From 81b363131353b78449289322acba5873a1432efc Mon Sep 17 00:00:00 2001
+From: Alistair Francis <alistair@alistair23.me>
+Date: Sun, 16 Aug 2020 10:04:00 -0700
+Subject: [PATCH] Revert "module: Harden STRICT_MODULE_RWX"
+
+This reverts commit 5c3a7db0c7ec4bbd5bd3f48af9be859a8fa3e532.
+
+This commit breaks module loading with binutils-2.35. See
+https://lore.kernel.org/lkml/CAMj1kXErCQYNN9r5siGNukc+9KC=QnER8LfFXVfbHdeDivYztg@mail.gmail.com/
+for more details.
+
+Until this is addresses let's just revert the patch.
+
+Signed-off-by: Alistair Francis <alistair@alistair23.me>
+---
+ kernel/module.c | 24 ------------------------
+ 1 file changed, 24 deletions(-)
+
+diff --git a/kernel/module.c b/kernel/module.c
+index aa183c9ac0a2..3a79b60edaa4 100644
+--- a/kernel/module.c
++++ b/kernel/module.c
+@@ -2045,28 +2045,9 @@ static void module_enable_nx(const struct module *mod)
+ 	frob_writable_data(&mod->init_layout, set_memory_nx);
+ }
+ 
+-static int module_enforce_rwx_sections(Elf_Ehdr *hdr, Elf_Shdr *sechdrs,
+-				       char *secstrings, struct module *mod)
+-{
+-	const unsigned long shf_wx = SHF_WRITE|SHF_EXECINSTR;
+-	int i;
+-
+-	for (i = 0; i < hdr->e_shnum; i++) {
+-		if ((sechdrs[i].sh_flags & shf_wx) == shf_wx)
+-			return -ENOEXEC;
+-	}
+-
+-	return 0;
+-}
+-
+ #else /* !CONFIG_STRICT_MODULE_RWX */
+ static void module_enable_nx(const struct module *mod) { }
+ static void module_enable_ro(const struct module *mod, bool after_init) {}
+-static int module_enforce_rwx_sections(Elf_Ehdr *hdr, Elf_Shdr *sechdrs,
+-				       char *secstrings, struct module *mod)
+-{
+-	return 0;
+-}
+ #endif /*  CONFIG_STRICT_MODULE_RWX */
+ 
+ #ifdef CONFIG_LIVEPATCH
+@@ -3407,11 +3388,6 @@ static struct module *layout_and_allocate(struct load_info *info, int flags)
+ 	if (err < 0)
+ 		return ERR_PTR(err);
+ 
+-	err = module_enforce_rwx_sections(info->hdr, info->sechdrs,
+-					  info->secstrings, info->mod);
+-	if (err < 0)
+-		return ERR_PTR(err);
+-
+ 	/* We will do a special allocation for per-cpu sections later. */
+ 	info->sechdrs[info->index.pcpu].sh_flags &= ~(unsigned long)SHF_ALLOC;
+ 
+-- 
+2.27.0
+
