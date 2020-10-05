@@ -25,6 +25,14 @@ This layer depends on:
 
 Follow the usual steps to setup OpenEmbedded and bitbake.
 
+Steps: 
+```
+git clone git://git.yoctoproject.org/poky && cd poky
+git clone https://github.com/alistair23/meta-pine64.git
+. oe-init-build-env 
+bitbake-layers add-layer ../meta-pine64/
+```
+
 ### Pine A64-LTS
 
 I don't have a board to test on, so this board is supported as best I can. If you have any problems please raise an issue on GitHub.
@@ -93,3 +101,13 @@ DISTRO_FEATURES += "x11"
 ## Demos
 
 Below are some demos of this layer being used with Pine64 boards.
+
+## Deploy to SD card
+
+First check your SD card fd using `lsblk`.
+```
+cd tmp/deploy/images/pine-a64-lts/
+sudo dd if=core-image-weston-pine-a64-lts.wic of=/dev/sd<X> bs=4M iflag=fullblock oflag=direct conv=fsync status=progress
+```
+Replace <X> with your results from `lsblk`.
+
