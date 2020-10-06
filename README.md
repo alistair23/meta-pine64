@@ -25,8 +25,8 @@ This layer depends on:
 
 Follow the usual steps to setup OpenEmbedded and bitbake.
 
-Steps: 
-```
+For example, if you use poky it would go like this: 
+```shell
 git clone git://git.yoctoproject.org/poky && cd poky
 git clone https://github.com/alistair23/meta-pine64.git
 . oe-init-build-env 
@@ -104,10 +104,15 @@ Below are some demos of this layer being used with Pine64 boards.
 
 ## Deploy to SD card
 
-First check your SD card fd using `lsblk`.
-```
+If you're doing this in a Linux environment, you can use the following process to transfer the image to an SD Card.
+In this example we're using the core-image-weston-pine-a64-lts.wic, if you have built a different image, update the paths accordingly.
+
+First check your SD card path using `lsblk`.
+
+```shell
 cd tmp/deploy/images/pine-a64-lts/
 sudo dd if=core-image-weston-pine-a64-lts.wic of=/dev/sd<X> bs=4M iflag=fullblock oflag=direct conv=fsync status=progress
 ```
+
 Replace <X> with your results from `lsblk`.
 
