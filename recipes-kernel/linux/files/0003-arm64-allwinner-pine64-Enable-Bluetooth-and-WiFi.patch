@@ -1,0 +1,71 @@
+From 9d74baacaac9f48279f82b55395304e5b4d9fcfe Mon Sep 17 00:00:00 2001
+From: Vasily Khoruzhick <anarsoul@gmail.com>
+Date: Wed, 31 Oct 2018 20:45:16 -0700
+Subject: [PATCH 3/5] arm64: allwinner: pine64: Enable Bluetooth and WiFi
+
+Pine64 has optional RTL8723BS WiFi + BT module, BT is connected to UART1
+and uses PL4 as BT reset, PL5 as device wake GPIO, PL6 as host wake GPIO
+the I2C controlling signals are connected to R_I2C bus.
+
+The Wi-Fi modules of Pine64 is powered via DLDO4 and ELDO1 (the latter
+one provides I/O voltage).
+
+Signed-off-by: Vasily Khoruzhick <anarsoul@gmail.com>
+Signed-off-by: Icenowy Zheng <icenowy@aosc.io>
+Signed-off-by: Alistair Francis <alistair@alistair23.me>
+---
+ .../boot/dts/allwinner/sun50i-a64-pine64.dts  | 24 ++++++++++++++++++-
+ 1 file changed, 23 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/allwinner/sun50i-a64-pine64.dts b/arch/arm64/boot/dts/allwinner/sun50i-a64-pine64.dts
+index 2165f238af13..f47ca9f260bc 100644
+--- a/arch/arm64/boot/dts/allwinner/sun50i-a64-pine64.dts
++++ b/arch/arm64/boot/dts/allwinner/sun50i-a64-pine64.dts
+@@ -35,6 +35,11 @@ hdmi_con_in: endpoint {
+ 			};
+ 		};
+ 	};
++
++	wifi_pwrseq: wifi_pwrseq {
++		compatible = "mmc-pwrseq-simple";
++		reset-gpios = <&r_pio 0 2 GPIO_ACTIVE_LOW>; /* PL2 */
++	};
+ };
+ 
+ &codec {
+@@ -124,6 +129,17 @@ &mmc0 {
+ 	status = "okay";
+ };
+ 
++&mmc1 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&mmc1_pins>;
++	vmmc-supply = <&reg_dldo4>;
++	vqmmc-supply = <&reg_eldo1>;
++	mmc-pwrseq = <&wifi_pwrseq>;
++	non-removable;
++	bus-width = <4>;
++	status = "okay";
++};
++
+ &ohci0 {
+ 	status = "okay";
+ };
+@@ -286,7 +302,13 @@ &uart0 {
+ &uart1 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&uart1_pins>, <&uart1_rts_cts_pins>;
+-	status = "disabled";
++	status = "okay";
++
++	bluetooth {
++		compatible = "realtek,rtl8723bs-bt";
++		device-wake-gpios = <&r_pio 0 5 GPIO_ACTIVE_HIGH>; /* PL5 */
++		host-wake-gpios = <&r_pio 0 6 GPIO_ACTIVE_HIGH>; /* PL6 */
++	};
+ };
+ 
+ /* On Pi-2 connector */
+-- 
+2.27.0
+

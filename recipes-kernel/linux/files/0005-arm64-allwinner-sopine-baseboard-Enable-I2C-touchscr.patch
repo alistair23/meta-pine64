@@ -1,0 +1,50 @@
+From f6de3bab256bc66395e31c71bb516eb6b418f728 Mon Sep 17 00:00:00 2001
+From: Alistair Francis <alistair@alistair23.me>
+Date: Fri, 8 Nov 2019 17:44:06 -0800
+Subject: [PATCH 5/5] arm64: allwinner: sopine-baseboard: Enable I2C
+ touchscreen
+
+Signed-off-by: Alistair Francis <alistair@alistair23.me>
+---
+ .../allwinner/sun50i-a64-sopine-baseboard.dts | 25 +++++++++++++++++++
+ 1 file changed, 25 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/allwinner/sun50i-a64-sopine-baseboard.dts b/arch/arm64/boot/dts/allwinner/sun50i-a64-sopine-baseboard.dts
+index 93f67f546729..3d441cf379a9 100644
+--- a/arch/arm64/boot/dts/allwinner/sun50i-a64-sopine-baseboard.dts
++++ b/arch/arm64/boot/dts/allwinner/sun50i-a64-sopine-baseboard.dts
+@@ -148,6 +148,31 @@ hdmi_out_con: endpoint {
+ 	};
+ };
+ 
++&i2c0 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&i2c0_pins>;
++	status = "okay";
++
++	gt911@5d {
++		compatible = "goodix,gt911";
++		reg = <0x5d>;
++
++		interrupt-parent = <&pio>;
++		interrupts = <7 4 IRQ_TYPE_EDGE_RISING>; /* PH4 */
++		reset-gpios = <&pio 7 11 GPIO_ACTIVE_HIGH>; /* PH11 */
++		touchscreen-inverted-x;
++		touchscreen-inverted-y;
++		AVDD28-supply = <&reg_ldo_io0>; /* VCC-CTP: GPIO0-LDO */
++	};
++};
++
++&reg_ldo_io0 {
++	regulator-min-microvolt = <3300000>;
++	regulator-max-microvolt = <3300000>;
++	regulator-name = "vcc-ctp";
++	status = "okay";
++};
++
+ &i2s2 {
+ 	status = "okay";
+ };
+-- 
+2.28.0
+
