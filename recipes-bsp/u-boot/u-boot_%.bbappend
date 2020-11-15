@@ -1,6 +1,7 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
 SRC_URI += "file://boot.txt \
+            file://0001-sun6i-Increase-the-maximum-UART-baud-rate.patch \
 	   "
 
 DEPENDS += "arm-trusted-firmware u-boot-tools-native"

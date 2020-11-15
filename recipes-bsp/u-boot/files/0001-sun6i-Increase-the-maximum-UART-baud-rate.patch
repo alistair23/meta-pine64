@@ -1,0 +1,43 @@
+From ad199d45477119a90985f6d774b0ebddd62a4cf2 Mon Sep 17 00:00:00 2001
+From: Alistair Francis <alistair@alistair23.me>
+Date: Sat, 14 Nov 2020 21:08:29 -0800
+Subject: [PATCH] sun6i: Increase the maximum UART baud rate
+
+Signed-off-by: Alistair Francis <alistair@alistair23.me>
+---
+ arch/arm/mach-sunxi/clock_sun6i.c | 4 ++--
+ include/configs/sunxi-common.h    | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/arch/arm/mach-sunxi/clock_sun6i.c b/arch/arm/mach-sunxi/clock_sun6i.c
+index 8e84062bd7..20290c3ff2 100644
+--- a/arch/arm/mach-sunxi/clock_sun6i.c
++++ b/arch/arm/mach-sunxi/clock_sun6i.c
+@@ -88,9 +88,9 @@ void clock_init_uart(void)
+ 		(struct sunxi_ccm_reg *)SUNXI_CCM_BASE;
+ 
+ 	/* uart clock source is apb2 */
+-	writel(APB2_CLK_SRC_OSC24M|
++	writel(APB2_CLK_SRC_PLL6|
+ 	       APB2_CLK_RATE_N_1|
+-	       APB2_CLK_RATE_M(1),
++	       APB2_CLK_RATE_M(5),
+ 	       &ccm->apb2_div);
+ 
+ 	/* open the clock for uart */
+diff --git a/include/configs/sunxi-common.h b/include/configs/sunxi-common.h
+index a6a4879523..7dbaa626a8 100644
+--- a/include/configs/sunxi-common.h
++++ b/include/configs/sunxi-common.h
+@@ -38,7 +38,7 @@
+ /* Serial & console */
+ #define CONFIG_SYS_NS16550_SERIAL
+ /* ns16550 reg in the low bits of cpu reg */
+-#define CONFIG_SYS_NS16550_CLK		24000000
++#define CONFIG_SYS_NS16550_CLK		240000000
+ #ifndef CONFIG_DM_SERIAL
+ # define CONFIG_SYS_NS16550_REG_SIZE	-4
+ # define CONFIG_SYS_NS16550_COM1		SUNXI_UART0_BASE
+-- 
+2.28.0
+
