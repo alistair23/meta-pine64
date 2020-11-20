@@ -1,19 +1,18 @@
-From f6de3bab256bc66395e31c71bb516eb6b418f728 Mon Sep 17 00:00:00 2001
+From c120917690386557386549137cec7559ebfb92bb Mon Sep 17 00:00:00 2001
 From: Alistair Francis <alistair@alistair23.me>
 Date: Fri, 8 Nov 2019 17:44:06 -0800
-Subject: [PATCH 5/5] arm64: allwinner: sopine-baseboard: Enable I2C
- touchscreen
+Subject: [PATCH] arm64: allwinner: sopine-baseboard: Enable I2C touchscreen
 
 Signed-off-by: Alistair Francis <alistair@alistair23.me>
 ---
- .../allwinner/sun50i-a64-sopine-baseboard.dts | 25 +++++++++++++++++++
- 1 file changed, 25 insertions(+)
+ .../allwinner/sun50i-a64-sopine-baseboard.dts | 26 +++++++++++++++++++
+ 1 file changed, 26 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/allwinner/sun50i-a64-sopine-baseboard.dts b/arch/arm64/boot/dts/allwinner/sun50i-a64-sopine-baseboard.dts
-index 93f67f546729..3d441cf379a9 100644
+index 93f67f546729..2dc953336d4c 100644
 --- a/arch/arm64/boot/dts/allwinner/sun50i-a64-sopine-baseboard.dts
 +++ b/arch/arm64/boot/dts/allwinner/sun50i-a64-sopine-baseboard.dts
-@@ -148,6 +148,31 @@ hdmi_out_con: endpoint {
+@@ -148,6 +148,32 @@ hdmi_out_con: endpoint {
  	};
  };
  
@@ -28,6 +27,7 @@ index 93f67f546729..3d441cf379a9 100644
 +
 +		interrupt-parent = <&pio>;
 +		interrupts = <7 4 IRQ_TYPE_EDGE_RISING>; /* PH4 */
++		irq-gpios = <&pio 7 4 GPIO_ACTIVE_HIGH>; /* PH4 */
 +		reset-gpios = <&pio 7 11 GPIO_ACTIVE_HIGH>; /* PH11 */
 +		touchscreen-inverted-x;
 +		touchscreen-inverted-y;
