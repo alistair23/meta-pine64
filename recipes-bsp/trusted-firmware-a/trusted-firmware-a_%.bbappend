@@ -1,0 +1,2 @@
+COMPATIBLE_MACHINE_append_a64 = "|a64"
+
