@@ -6,6 +6,9 @@
 #    20480 KiB           -> kernel, dtbs, boot script
 #    20480 KiB + 50 MiB  -> rootfs
 #
+# MSDOS partition table is required because the bootloader would overlap the
+# GPT table
+bootloader --ptable msdos
 
 part spl   --align 8                          --ondisk mmcblk0 --no-table                     --source rawcopy           --sourceparams="file=u-boot-sunxi-with-spl.bin"
 part /boot --align 20480 --size=100M --active --ondisk mmcblk0 --fstype=vfat --label pine64   --source bootimg-partition
