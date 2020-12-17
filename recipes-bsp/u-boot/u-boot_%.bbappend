@@ -12,6 +12,9 @@ ATF_DEPENDS ??= ""
 EXTRA_OEMAKE_append_a64 = " BL31=${DEPLOY_DIR_IMAGE}/bl31-sun50i_a64.bin"
 ATF_DEPENDS_a64 = " virtual/trusted-firmware-a:do_deploy"
 
+EXTRA_OEMAKE_append_h6 = " BL31=${DEPLOY_DIR_IMAGE}/bl31-sun50i_h6.bin"
+ATF_DEPENDS_h6 = " virtual/trusted-firmware-a:do_deploy"
+
 do_compile[depends] .= "${ATF_DEPENDS}"
 
 do_configure_prepend_a64() {
