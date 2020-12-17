@@ -20,6 +20,9 @@ This layer depends on:
 * URI: git://github.com/openembedded/bitbake
   * branch: master
   * revision: HEAD
+* URI: git://git.yoctoproject.org/meta-arm
+  * branch: master
+  * revision: HEAD
 
 ## Building
 
