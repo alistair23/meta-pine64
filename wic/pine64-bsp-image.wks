@@ -10,6 +10,6 @@
 # GPT table
 bootloader --ptable msdos
 
-part spl   --align 8                          --ondisk mmcblk0 --no-table                     --source rawcopy           --sourceparams="file=u-boot-sunxi-with-spl.bin"
-part /boot --align 20480 --size=100M --active --ondisk mmcblk0 --fstype=vfat --label pine64   --source bootimg-partition
-part /     --align 4096                       --ondisk mmcblk0 --fstype=ext4 --label platform --source=rootfs
+part spl   --offset 8                          --ondisk mmcblk0 --no-table                     --source rawcopy           --sourceparams="file=u-boot-sunxi-with-spl.bin"
+part /boot --offset 20480 --size=100M --active --ondisk mmcblk0 --fstype=vfat --label pine64   --source bootimg-partition
+part /     --align 4096                        --ondisk mmcblk0 --fstype=ext4 --label platform --source=rootfs
