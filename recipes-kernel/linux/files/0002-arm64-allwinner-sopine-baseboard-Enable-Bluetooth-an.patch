@@ -1,8 +1,7 @@
-From 00416c117381aa907d24142625e1423f2e36c1bd Mon Sep 17 00:00:00 2001
+From 71a01ed2f0488ae75529061caeb9c242b92c12fc Mon Sep 17 00:00:00 2001
 From: Alistair Francis <alistair@alistair23.me>
 Date: Sat, 7 Dec 2019 11:21:03 -0800
-Subject: [PATCH 2/5] arm64: allwinner: sopine-baseboard: Enable Bluetooth and
- WiFi
+Subject: [PATCH] arm64: allwinner: sopine-baseboard: Enable Bluetooth and WiFi
 
 The sopine board has an optional RTL8723BS WiFi + BT module that can be
 connected to UART1. Add this to the device tree so that it will work
@@ -14,7 +13,7 @@ Signed-off-by: Alistair Francis <alistair@alistair23.me>
  1 file changed, 29 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/allwinner/sun50i-a64-sopine-baseboard.dts b/arch/arm64/boot/dts/allwinner/sun50i-a64-sopine-baseboard.dts
-index b3345d384d92..38fdaa456e17 100644
+index a04e89c6bafd..be0a5af637ec 100644
 --- a/arch/arm64/boot/dts/allwinner/sun50i-a64-sopine-baseboard.dts
 +++ b/arch/arm64/boot/dts/allwinner/sun50i-a64-sopine-baseboard.dts
 @@ -42,6 +42,11 @@ reg_vcc1v8: vcc1v8 {
@@ -67,6 +66,3 @@ index b3345d384d92..38fdaa456e17 100644
  /* On Pi-2 connector */
  &uart2 {
  	pinctrl-names = "default";
--- 
-2.27.0
-

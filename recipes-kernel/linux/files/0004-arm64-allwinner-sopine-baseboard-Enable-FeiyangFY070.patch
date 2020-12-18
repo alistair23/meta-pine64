@@ -1,7 +1,7 @@
-From 1cd1244f45f33e823803520a5def47fc1f338d93 Mon Sep 17 00:00:00 2001
+From 3528d22a86825032b15b57335914f9b97569ee46 Mon Sep 17 00:00:00 2001
 From: Alistair Francis <alistair@alistair23.me>
 Date: Mon, 7 Oct 2019 22:10:27 -0700
-Subject: [PATCH 4/5] arm64: allwinner: sopine-baseboard: Enable
+Subject: [PATCH] arm64: allwinner: sopine-baseboard: Enable
  FeiyangFY07024DI26A30-D DSI panel
 
 Feiyang FY07024DI26A30-D MIPI_DSI panel is desiged to attach with
@@ -20,7 +20,7 @@ Signed-off-by: Alistair Francis <alistair@alistair23.me>
  1 file changed, 47 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/allwinner/sun50i-a64-sopine-baseboard.dts b/arch/arm64/boot/dts/allwinner/sun50i-a64-sopine-baseboard.dts
-index 38fdaa456e17..93f67f546729 100644
+index be0a5af637ec..911c13dcf220 100644
 --- a/arch/arm64/boot/dts/allwinner/sun50i-a64-sopine-baseboard.dts
 +++ b/arch/arm64/boot/dts/allwinner/sun50i-a64-sopine-baseboard.dts
 @@ -6,6 +6,7 @@
@@ -91,6 +91,3 @@ index 38fdaa456e17..93f67f546729 100644
  &ehci0 {
  	status = "okay";
  };
--- 
-2.27.0
-

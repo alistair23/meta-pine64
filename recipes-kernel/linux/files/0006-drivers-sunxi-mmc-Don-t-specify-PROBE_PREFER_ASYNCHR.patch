@@ -1,0 +1,25 @@
+From d55be1387850c05ccff5bde3704c85d783d99139 Mon Sep 17 00:00:00 2001
+From: Alistair Francis <alistair@alistair23.me>
+Date: Mon, 21 Dec 2020 16:23:09 -0800
+Subject: [PATCH] drivers: sunxi-mmc: Don't specify PROBE_PREFER_ASYNCHRONOUS
+
+Using PROBE_PREFER_ASYNCHRONOUS breaks the bootup on the SoPine, so just
+delete the probe type.
+
+Signed-off-by: Alistair Francis <alistair@alistair23.me>
+---
+ drivers/mmc/host/sunxi-mmc.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/drivers/mmc/host/sunxi-mmc.c b/drivers/mmc/host/sunxi-mmc.c
+index fc62773602ec..5e95bbc51644 100644
+--- a/drivers/mmc/host/sunxi-mmc.c
++++ b/drivers/mmc/host/sunxi-mmc.c
+@@ -1514,7 +1514,6 @@ static const struct dev_pm_ops sunxi_mmc_pm_ops = {
+ static struct platform_driver sunxi_mmc_driver = {
+ 	.driver = {
+ 		.name	= "sunxi-mmc",
+-		.probe_type = PROBE_PREFER_ASYNCHRONOUS,
+ 		.of_match_table = of_match_ptr(sunxi_mmc_of_match),
+ 		.pm = &sunxi_mmc_pm_ops,
+ 	},

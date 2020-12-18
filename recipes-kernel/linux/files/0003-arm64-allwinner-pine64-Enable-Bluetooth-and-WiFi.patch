@@ -1,7 +1,7 @@
-From 9d74baacaac9f48279f82b55395304e5b4d9fcfe Mon Sep 17 00:00:00 2001
+From 3432c1893c5f5d60311dc395b9c3728668d3de4a Mon Sep 17 00:00:00 2001
 From: Vasily Khoruzhick <anarsoul@gmail.com>
 Date: Wed, 31 Oct 2018 20:45:16 -0700
-Subject: [PATCH 3/5] arm64: allwinner: pine64: Enable Bluetooth and WiFi
+Subject: [PATCH] arm64: allwinner: pine64: Enable Bluetooth and WiFi
 
 Pine64 has optional RTL8723BS WiFi + BT module, BT is connected to UART1
 and uses PL4 as BT reset, PL5 as device wake GPIO, PL6 as host wake GPIO
@@ -18,7 +18,7 @@ Signed-off-by: Alistair Francis <alistair@alistair23.me>
  1 file changed, 23 insertions(+), 1 deletion(-)
 
 diff --git a/arch/arm64/boot/dts/allwinner/sun50i-a64-pine64.dts b/arch/arm64/boot/dts/allwinner/sun50i-a64-pine64.dts
-index 2165f238af13..f47ca9f260bc 100644
+index 329cf276561e..2d5813c997bd 100644
 --- a/arch/arm64/boot/dts/allwinner/sun50i-a64-pine64.dts
 +++ b/arch/arm64/boot/dts/allwinner/sun50i-a64-pine64.dts
 @@ -35,6 +35,11 @@ hdmi_con_in: endpoint {
@@ -66,6 +66,3 @@ index 2165f238af13..f47ca9f260bc 100644
  };
  
  /* On Pi-2 connector */
--- 
-2.27.0
-
