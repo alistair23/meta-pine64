@@ -24,6 +24,7 @@ SRC_URI = "git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git;branch
            file://0006-drivers-sunxi-mmc-Don-t-specify-PROBE_PREFER_ASYNCHR.patch \
            file://extra.cfg \
            file://screen.cfg \
+           file://battery.cfg \
 	  "
 
 KBUILD_DEFCONFIG_sopine-a64 = "defconfig"
