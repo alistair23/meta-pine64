@@ -33,3 +33,5 @@ KCONFIG_MODE="--alldefconfig"
 
 COMPATIBLE_MACHINE = "pine-a64-lts|sopine-a64"
 
+# This is necessary since kmeta would be necessary otherwise
+KERNEL_FEATURES_remove = "cfg/fs/vfat.scc"
