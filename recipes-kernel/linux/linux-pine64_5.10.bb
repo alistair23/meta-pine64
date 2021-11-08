@@ -29,9 +29,10 @@ SRC_URI = "git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git;branch
 
 KBUILD_DEFCONFIG_sopine-a64 = "defconfig"
 KBUILD_DEFCONFIG_pine-a64-lts = "defconfig"
+KBUILD_DEFCONFIG_pine-a64-plus = "defconfig"
 KCONFIG_MODE="--alldefconfig"
 
-COMPATIBLE_MACHINE = "pine-a64-lts|sopine-a64"
+COMPATIBLE_MACHINE = "pine-a64-lts|sopine-a64|pine-a64-plus"
 
 # This is necessary since kmeta would be necessary otherwise
 KERNEL_FEATURES_remove = "cfg/fs/vfat.scc"
