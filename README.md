@@ -50,6 +50,12 @@ MACHINE=pine-a64-lts bitbake core-image-base
 MACHINE=sopine-a64 bitbake core-image-base
 ```
 
+### Pine A64-Plus
+
+```
+MACHINE=pine-a64-plus bitbake core-image-base
+```
+
 ### Other Pine64 Boards
 
 Please raise a GitHub issue if you would like another board suppoted.
