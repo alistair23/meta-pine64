@@ -38,16 +38,6 @@ do_install:append:pinenote-a55() {
 	ln -sf nvram_ap6255_cy.txt ${D}${nonarch_base_libdir}/firmware/brcm/brcmfmac43455-sdio.pine64,pinenote.txt        
 }
 
-# Install addition firmwares
-#do_install:append:pinenote-a55() {
-#	install -d ${D}${nonarch_base_libdir}/firmware/brcm
-#	ln -sf ../pinenote/fw_bcm43455c0_ag_cy.bin ${D}${nonarch_base_libdir}/firmware/brcm/brcmfmac43455-sdio.bin
-#	ln -sf ../pinenote/nvram_ap6255_cy.txt ${D}${nonarch_base_libdir}/firmware/brcm/brcmfmac43455-sdio.txt
-#	ln -sf ../pinenote/fw_bcm43455c0_ag_cy.bin ${D}${nonarch_base_libdir}/firmware/brcm/brcmfmac43455-sdio.pine64,pinenote.bin
-#	ln -sf ../pinenote/nvram_ap6255_cy.txt ${D}${nonarch_base_libdir}/firmware/brcm/brcmfmac43455-sdio.pine64,pinenote.txt
-#	ln -sf ../pinenote/BCM4345C0.hcd ${D}${nonarch_base_libdir}/firmware/brcm/BCM4345C0.hcd
-#}
-
 FILES_${PN}-bcm43455 += " \
         ${nonarch_base_libdir}/firmware/brcm/* \
 "

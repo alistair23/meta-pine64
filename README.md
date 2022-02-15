@@ -56,6 +56,18 @@ MACHINE=sopine-a64 bitbake core-image-base
 MACHINE=pine-a64-plus bitbake core-image-base
 ```
 
+### PineNote A55
+
+```
+MACHINE=pinenote-a55 bitbake core-image-base
+```
+
+or
+
+```
+MACHINE=pinenote-a55 bitbake tablet-image-dev
+```
+
 ### Other Pine64 Boards
 
 Please raise a GitHub issue if you would like another board suppoted.
