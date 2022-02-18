@@ -1,5 +1,6 @@
 #require recipes-core/images/core-image-minimal.bb
 require recipes-core/images/core-image-minimal-dev.bb
+require recipes-graphics/images/core-image-x11.bb
 
 DESCRIPTION = "An e-reader tablet image suitable for development work."
 
@@ -25,7 +26,7 @@ IMAGE_INSTALL += " \
 
 # connectivity
 IMAGE_INSTALL += " \
-    bluez5 \
+    packagegroup-tools-bluetooth \
 "
 
 # devtools
@@ -46,4 +47,31 @@ IMAGE_INSTALL += " \
     vim \
     nano \
     tree \
+"
+
+# graphics
+IMAGE_INSTALL += " \
+    libinput \
+"
+#    vulkan-loader \
+#    vulkan-tools \
+#    vulkan-samples \
+#
+
+# multimedia audio
+IMAGE_INSTALL += " \
+    alsa-lib \
+    alsa-plugins \
+    alsa-tools \
+    alsa-utils \
+    flac \
+    liba52 \
+    libogg \
+    pulseaudio \
+"
+
+# multimedia video
+IMAGE_INSTALL += " \
+    libpng \
+    tiff \
 "
