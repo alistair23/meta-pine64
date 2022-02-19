@@ -26,8 +26,10 @@ IMAGE_INSTALL += " \
 
 # connectivity
 IMAGE_INSTALL += " \
-    packagegroup-tools-bluetooth \
+    bluez5 \
 "
+#    packagegroup-tools-bluetooth \
+#
 
 # devtools
 IMAGE_INSTALL += " \
@@ -52,6 +54,9 @@ IMAGE_INSTALL += " \
 # graphics
 IMAGE_INSTALL += " \
     libinput \
+    xinput \
+    xinput-calibrator \
+    evtest \
 "
 #    vulkan-loader \
 #    vulkan-tools \
@@ -65,10 +70,16 @@ IMAGE_INSTALL += " \
     alsa-tools \
     alsa-utils \
     flac \
+    ffmpeg \
     liba52 \
     libogg \
+    mpg123 \
     pulseaudio \
+    pulseaudio-server \
+    libpulse \
 "
+#    vlc \
+#
 
 # multimedia video
 IMAGE_INSTALL += " \

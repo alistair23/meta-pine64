@@ -1,0 +1,20 @@
+#!/bin/sh
+
+HAVE_TOUCHSCREEN=1
+
+#HAVE_KEYBOARD=0
+#HAVE_KEYBOARD_PORTRAIT=0
+#HAVE_KEYBOARD_LANDSCAPE=0
+#DISPLAY_CAN_ROTATE=0
+#DISPLAY_ORIENTATION=0
+
+#DISPLAY_WIDTH_PIXELS=`/usr/sbin/fbset | grep geometry | awk '{ print $2 }'`
+#DISPLAY_HEIGHT_PIXELS=`/usr/sbin/fbset | grep geometry | awk '{ print $3 }'`
+#DISPLAY_BPP=`/usr/sbin/fbset | grep geometry | awk '{ print $6 }'`
+
+# 
+# No way to guess these or have any defaults
+#
+#DISPLAY_WIDTH_MM
+#DISPLAY_HEIGHT_MM
+#DISPLAY_SUBPIXEL_ORDER=
