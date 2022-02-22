@@ -1,5 +1,5 @@
 SUMMARY = "Pine64 PineNote A55 Firmware"
-HOMEPAGE = "https://github.com/aehs29/baremetal-helloqemu"
+HOMEPAGE = "https://gitlab.com/calebccff/firmware-pine64-pinenote"
 DESCRIPTION = "Pine64 PineNote A55 Firmware"
 LICENSE = "CLOSED"
 #LIC_FILES_CHKSUM = "file://LICENSE;md5="
