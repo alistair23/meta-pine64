@@ -18,7 +18,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
 LINUX_VERSION ?= "5.16-rc8"
 LINUX_VERSION_EXTENSION:append = "-pinenote"
 
-SRCREV_pinenote-a55="46e87f1f9c7dd22af26d99f60eb83d2cace43cb5"
+SRCREV = "46e87f1f9c7dd22af26d99f60eb83d2cace43cb5"
 
 PV = "${LINUX_VERSION}+git${SRCPV}"
 
