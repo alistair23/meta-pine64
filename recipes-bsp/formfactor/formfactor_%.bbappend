@@ -1,1 +1,1 @@
-FILESEXTRAPATHS_prepend_pinenote-a55 := "${THISDIR}/${PN}-pinenote-a55:"
+FILESEXTRAPATHS:prepend:pinenote-a55 := "${THISDIR}/${PN}-pinenote-a55:"

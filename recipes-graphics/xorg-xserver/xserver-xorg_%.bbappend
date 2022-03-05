@@ -1,7 +1,7 @@
 
-FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
+FILESEXTRAPATHS:prepend:pinenote-a55 := "${THISDIR}/files:"
 
-SRC_URI += " \
+SRC_URI:append:pinenote-a55 = " \
 	file://50-touchscreen.conf \
 "
 
@@ -10,6 +10,6 @@ do_install:append:pinenote-a55() {
 	install -m 0644 ${WORKDIR}/50-touchscreen.conf ${D}${datadir}/X11/xorg.conf.d/
 }
 
-FILES_${PN} += " \
+FILES_${PN}:append:pinenote-a55 = " \
 	${datadir}/X11/xorg.conf.d/50-touchscreen.conf \
 "

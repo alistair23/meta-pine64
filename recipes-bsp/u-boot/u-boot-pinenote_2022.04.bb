@@ -42,21 +42,21 @@ S = "${WORKDIR}/git"
 B = "${WORKDIR}/build"
 do_configure[cleandirs] = "${B}"
 
-DEPENDS_append:pinenote-a55 = " bc-native dtc-native python3-setuptools-native u-boot-tools-native"
+DEPENDS:append:pinenote-a55 = " bc-native dtc-native python3-setuptools-native u-boot-tools-native"
 
 SPL_BINARY="u-boot-rockchip.bin"
 UBOOT_MACHINE = "pinenote-rk3566_defconfig"
 UBOOT_ENV_SUFFIX = "scr"
 UBOOT_ENV = "boot"
 
-do_configure_append:pinenote-a55() {
+do_configure:append:pinenote-a55() {
     # Copy binaries where they need to be
     install -m 755 ${WORKDIR}/mkimage ${S}/tools/
     install -m 644 ${WORKDIR}/${RAM_INIT_BIN} ${B}/ram_init.bin
     install -m 644 ${WORKDIR}/${BL_BIN} ${B}/bl31.elf
 }
 
-do_compile_append() {
+do_compile:append() {
     # Translate boot.txt to a boot.scr by using the mkimage command 
     ${S}/tools/mkimage -C none -A arm -T script -d ${WORKDIR}/boot.txt ${WORKDIR}/${UBOOT_ENV_BINARY}
 }

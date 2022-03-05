@@ -12,15 +12,15 @@ SRC_URI += " \
 KCONFIG_MODE = "--alldefconfig"
 
 # TODO: Patch the dts into the source tree
-KERNEL_DEVICETREE_pinenote += " rk3566-pinenote.dtb"
+KERNEL_DEVICETREE:pinenote-a55 += " rk3566-pinenote.dtb"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
 
 LINUX_VERSION ?= "5.14-rc1"
-LINUX_VERSION_EXTENSION:append = "-pinenote"
+LINUX_VERSION_EXTENSION:append:pinenote-a55 = "-pinenote"
 
 SRCREV = "5a514485388e3e428791ad8c454325814e11bb7b"
 
 PV = "${LINUX_VERSION}+git${SRCPV}"
 
-COMPATIBLE_MACHINE_pinenote-a55:append = "|pinenote-a55"
+COMPATIBLE_MACHINE:append:pinenote-a55 = "|pinenote-a55"
