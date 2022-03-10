@@ -1,3 +1,3 @@
-COMPATIBLE_MACHINE_append_a64 = "|a64"
-COMPATIBLE_MACHINE_append_h6 = "|h6"
+COMPATIBLE_MACHINE:append:a64 = "|a64"
+COMPATIBLE_MACHINE:append:h6 = "|h6"
 

@@ -1,2 +1,2 @@
-PACKAGECONFIG_append_h6 = " kmsro panfrost"
+PACKAGECONFIG:append:h6 = " kmsro panfrost"
 

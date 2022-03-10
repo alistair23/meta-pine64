@@ -1,2 +1,2 @@
-COMPATIBLE_MACHINE_append_pine-h64 = "|pine-h64"
+COMPATIBLE_MACHINE:append:pine-h64 = "|pine-h64"
 
