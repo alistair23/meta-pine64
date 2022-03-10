@@ -73,12 +73,12 @@ To use WiFi add this to your local.conf:
 
 ```
 DISTRO_FEATURES += "ipv4 ipv6 wifi"
-IMAGE_INSTALL_append = "linux-firmware-rtl8723 wpa-supplicant"
+IMAGE_INSTALL:append = "linux-firmware-rtl8723 wpa-supplicant"
 ```
 
 ### Displaying the kernel boot log on HDMI
 
-To see the kernel boot log on the HDMI output, which is useful for debugging, change `recipes-bsp/u-boot/files/boot.txt` to the following:
+To see the kernel boot log on the HDMI output, which is useful for debugging, change `recipes-bsp/u-boot/files/boot.cmd` to the following:
 
 ```
 setenv bootargs console=tty0 console=ttyS0,115200 root=/dev/mmcblk0p2 rootwait
@@ -92,7 +92,7 @@ To use Wayland graphics add this to your local.conf:
 
 ```
 DISTRO_FEATURES += "wayland opengl"
-PACKAGECONFIG_append_pn-mesa = " gallium lima kmsro"
+PACKAGECONFIG:append:pn-mesa = " gallium lima kmsro"
 ```
 
 Then build Weston using:
