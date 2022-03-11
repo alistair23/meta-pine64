@@ -24,12 +24,6 @@ This layer depends on:
   * branch: master
   * revision: HEAD
 
-_PineNote A55 additional dependencies_:
-
-* URI: git://github.com/meta-qt5/meta-qt5.git
-  * branch: master
-  * revision: HEAD
-
 ## Building
 
 Follow the usual steps to setup OpenEmbedded and bitbake.
@@ -65,15 +59,7 @@ MACHINE=pine-a64-plus bitbake core-image-base
 ### PineNote A55
 
 ```
-MACHINE=pinenote-a55 bitbake <image>
-```
-
-`<image>` options include:
-
-```
-core-image-base
-tablet-image-dev
-tablet-image-sato-dev
+MACHINE=pinenote-a55 bitbake core-image-base
 ```
 
 ### Other Pine64 Boards
@@ -88,8 +74,6 @@ To use systemd add this to your local.conf:
 INIT_MANAGER = "systemd"
 ```
 
-_PineNote A55_: `systemd` is set as the default in the machine configuration.
-
 ### Connecting to WiFi
 
 To use WiFi add this to your local.conf:
@@ -97,12 +81,6 @@ To use WiFi add this to your local.conf:
 ```
 DISTRO_FEATURES += "ipv4 ipv6 wifi"
 IMAGE_INSTALL:append = "linux-firmware-rtl8723 wpa-supplicant"
-```
-
-_PineNote A55_: The tablet images use NetworkManager (via `packagegroup-pinenote-networking`), and the following command can be executed via serial console to connect to and store a WiFi network:
-
-```
-nmcli dev wifi connect <network-ssid> password "<network-password>"
 ```
 
 ### Displaying the kernel boot log on HDMI
@@ -135,8 +113,6 @@ To add X11 support as well add this to your local.conf:
 ```
 DISTRO_FEATURES += "x11"
 ```
-
-_PineNote A55_: `opengl` and `X11` support is included by default in the machine configuration.
 
 ## Demos
 
