@@ -28,7 +28,7 @@ do_install(){
     #mv ${D}${nonarch_base_libdir}/firmware/brcm/brcmfmac43455-sdio.clm_blob ${D}${nonarch_base_libdir}/firmware/brcm/brcmfmac43455-sdio.clm_blob.DISABLED
 }
 
-FILES_${PN} += " \
-    ${base_libdir}/firmware/waveform.bin \
-    ${base_libdir}/firmware/brcm/* \
+FILES:${PN} += " \
+    ${nonarch_base_libdir}/firmware/waveform.bin \
+    ${nonarch_base_libdir}/firmware/brcm/* \
 "

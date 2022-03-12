@@ -10,6 +10,6 @@ do_install:append:pinenote-a55() {
 	install -m 0644 ${WORKDIR}/50-touchscreen.conf ${D}${datadir}/X11/xorg.conf.d/
 }
 
-FILES_${PN}:append:pinenote-a55 = " \
+FILES:${PN}:append:pinenote-a55 = " \
 	${datadir}/X11/xorg.conf.d/50-touchscreen.conf \
 "
