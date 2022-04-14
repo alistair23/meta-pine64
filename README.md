@@ -31,8 +31,12 @@ Follow the usual steps to setup OpenEmbedded and bitbake.
 For example, if you use poky it would go like this: 
 ```shell
 git clone git://git.yoctoproject.org/poky && cd poky
+git clone git://git.yoctoproject.org/meta-arm
 git clone https://github.com/alistair23/meta-pine64.git
 . oe-init-build-env 
+bitbake-layers add-layer  ../meta-arm/meta-arm-toolchain/
+bitbake-layers add-layer  ../meta-arm/meta-arm
+bitbake-layers add-layer  ../meta-arm/meta-arm-bsp/
 bitbake-layers add-layer ../meta-pine64/
 ```
 
