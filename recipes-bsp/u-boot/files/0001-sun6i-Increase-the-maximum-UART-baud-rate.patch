@@ -1,6 +1,6 @@
-From ad199d45477119a90985f6d774b0ebddd62a4cf2 Mon Sep 17 00:00:00 2001
+From 430d075a8e0390ebf46cc8ded6d0405e7cfb6b55 Mon Sep 17 00:00:00 2001
 From: Alistair Francis <alistair@alistair23.me>
-Date: Sat, 14 Nov 2020 21:08:29 -0800
+Date: Mon, 4 Jul 2022 20:14:26 +1000
 Subject: [PATCH] sun6i: Increase the maximum UART baud rate
 
 Signed-off-by: Alistair Francis <alistair@alistair23.me>
@@ -10,34 +10,31 @@ Signed-off-by: Alistair Francis <alistair@alistair23.me>
  2 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/arch/arm/mach-sunxi/clock_sun6i.c b/arch/arm/mach-sunxi/clock_sun6i.c
-index 8e84062bd7..20290c3ff2 100644
+index cda6949dff..8d595a1d10 100644
 --- a/arch/arm/mach-sunxi/clock_sun6i.c
 +++ b/arch/arm/mach-sunxi/clock_sun6i.c
-@@ -88,9 +88,9 @@ void clock_init_uart(void)
- 		(struct sunxi_ccm_reg *)SUNXI_CCM_BASE;
+@@ -104,9 +104,9 @@ void clock_init_uart(void)
+ 				   CONFIG_CONS_INDEX - 1));
+ #else
+ 		/* uart clock source is apb2 */
+-		writel(APB2_CLK_SRC_OSC24M|
++		writel(APB2_CLK_SRC_PLL6|
+ 		       APB2_CLK_RATE_N_1|
+-		       APB2_CLK_RATE_M(1),
++		       APB2_CLK_RATE_M(5),
+ 		       &ccm->apb2_div);
  
- 	/* uart clock source is apb2 */
--	writel(APB2_CLK_SRC_OSC24M|
-+	writel(APB2_CLK_SRC_PLL6|
- 	       APB2_CLK_RATE_N_1|
--	       APB2_CLK_RATE_M(1),
-+	       APB2_CLK_RATE_M(5),
- 	       &ccm->apb2_div);
- 
- 	/* open the clock for uart */
+ 		/* open the clock for uart */
 diff --git a/include/configs/sunxi-common.h b/include/configs/sunxi-common.h
-index a6a4879523..7dbaa626a8 100644
+index 4bab917c0b..43c8a3434b 100644
 --- a/include/configs/sunxi-common.h
 +++ b/include/configs/sunxi-common.h
-@@ -38,7 +38,7 @@
- /* Serial & console */
- #define CONFIG_SYS_NS16550_SERIAL
- /* ns16550 reg in the low bits of cpu reg */
+@@ -26,7 +26,7 @@
+ /* suniv doesn't have apb2 and uart is connected to apb1 */
+ #define CONFIG_SYS_NS16550_CLK		100000000
+ #else
 -#define CONFIG_SYS_NS16550_CLK		24000000
 +#define CONFIG_SYS_NS16550_CLK		240000000
+ #endif
  #ifndef CONFIG_DM_SERIAL
  # define CONFIG_SYS_NS16550_REG_SIZE	-4
- # define CONFIG_SYS_NS16550_COM1		SUNXI_UART0_BASE
--- 
-2.28.0
-
