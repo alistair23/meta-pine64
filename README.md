@@ -10,6 +10,8 @@ This layer aims to support as many features as possible on Pine64 devices.
 Where possible the layer aims to use opensource and upstream projects
 avoiding custom forks and binary solutions.
 
+<noscript><a href="https://liberapay.com/alistair23/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></noscript>
+
 ## Dependencies
 
 This layer depends on:
