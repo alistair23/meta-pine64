@@ -5,6 +5,7 @@ SRC_URI:append:a64 = " \
     "
 
 DEPENDS:append:a64 = " u-boot-tools-native"
+DEPENDS:append:rk3399 = " u-boot-tools-native python3-pyelftools-native"
 
 ATF_DEPENDS ??= ""
 
@@ -19,6 +20,9 @@ EXTRA_OEMAKE:append:h6 = " BL31=${DEPLOY_DIR_IMAGE}/bl31-sun50i_h6.bin"
 # https://elixir.bootlin.com/u-boot/latest/source/board/sunxi/README.sunxi64#L64
 EXTRA_OEMAKE:append:h6 = " SCP=/dev/null"
 ATF_DEPENDS:h6 = " trusted-firmware-a:do_deploy"
+
+EXTRA_OEMAKE:append:rk3399 = " BL31=${DEPLOY_DIR_IMAGE}/bl31-rk3399.elf"
+ATF_DEPENDS:rk3399 = " trusted-firmware-a:do_deploy"
 
 do_compile[depends] .= "${ATF_DEPENDS}"
 
