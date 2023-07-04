@@ -62,6 +62,12 @@ MACHINE=sopine-a64 bitbake core-image-base
 MACHINE=pine-a64-plus bitbake core-image-base
 ```
 
+### Pine RockPro64
+
+```
+MACHINE=pine-rockpro64 bitbake core-image-base
+```
+
 ### Other Pine64 Boards
 
 Please raise a GitHub issue if you would like another board suppoted.

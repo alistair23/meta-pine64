@@ -1,0 +1,7 @@
+bootloader --ptable gpt
+
+part loader1 --align 32   --no-table --source rawcopy --sourceparams="file=idbloader.img"
+part loader2 --align 8192 --no-table --source rawcopy --sourceparams="file=u-boot.itb"
+
+part /boot --offset 16777216 --ondisk mmcblk1 --fstype=vfat --label boot   --source bootimg-partition --size=100M --active
+part /     --align 4096      --ondisk mmcblk1 --fstype=ext4 --label rootfs --source=rootfs --uuid B921B045-1DF0-41C3-AF44-4C6F280D3FAE
