@@ -68,6 +68,16 @@ MACHINE=pine-a64-plus bitbake core-image-base
 MACHINE=pine-rockpro64 bitbake core-image-base
 ```
 
+You can get serial access by connecting an FDTI chip to pins 8 and 10 on the
+board (GND on pin 9). See the wiki for details on the pin
+layout: https://wiki.pine64.org/wiki/ROCKPro64
+
+Then attach to the console, note the high baud rate
+
+```
+screen /dev/ttyUSB0 1500000
+```
+
 ### Other Pine64 Boards
 
 Please raise a GitHub issue if you would like another board suppoted.
@@ -136,3 +146,55 @@ sudo dd if=core-image-weston-pine-a64-lts.wic of=/dev/sd<X> bs=4M iflag=fullbloc
 ```
 
 Replace <X> with your results from `lsblk`.
+
+## RockPro64 PCIe Endpoint
+
+The RockPro64 can be used as a PCIe endpoint device attached to a host PC.
+
+### Building the images
+
+First to build images for endpoint mode open `conf/local.conf` and add the
+following `DISTRO_FEATURES`
+
+```
+DISTRO_FEATURES:pine-rockpro64 += " pci_ep"
+```
+
+This enables the `pci_ep` distro feature, which configures options in this
+layer to target PCIe endpoint support.
+
+You can then build the images with
+
+```
+MACHINE=pine-rockpro64 bitbake core-image-base
+```
+
+Once the images are built, you will need to connect the device.
+
+### Required hardware
+
+You will need the following:
+
+ * RockPro64 (4GB ram version): https://pine64.com/product/rockpro64-4gb-single-board-computer/
+ * Suitable Power supply: https://pine64.com/product/12v-5a-us-power-supply/
+ * A working Serial console adapter: https://pine64.com/product/serial-console-woodpecker-edition/
+ * A heatsink or fan: https://pine64.com/product/rockpro64-20mm-mid-profile-heatsink/
+ * A PCIe RX-TX cross cable, the R22NS model from ADT-Link: http://www.adt.link/product/R22_Jump.html has been tested and works.
+
+### Prepare the hardware
+
+You need to cut the 12V and 3.3V pins form one end of the PCIe cable.
+Otherwise, strange things will happen as the host PC will try to start up
+using PCI power from the rockpro64.
+
+On side B: pins B1, B2, B3, B8 and B10
+On side A: pins A2, A3, A9 and A10
+
+![RockPro64 PCIe Cable](docs/rockpro64-cable.jpg)
+
+The picture shows side B of the cable.
+
+Insert the blade under the copper at the end of the pin and unstick the copper
+from the resin board. Once the pin copper is fully raised up to the black
+isolation, cut it with a small cutting pliers (cutting with the cutter knife
+is possible but beware of the blade going too far as force is applied).

@@ -4,6 +4,8 @@ SRC_URI:append:a64 = " \
     file://boot.cmd \
     "
 
+SRC_URI:append:rk3399 = '${@bb.utils.contains("DISTRO_FEATURES", "pci_ep", " file://0001-board-rockpro64-Enable-PCIe-endpoint-mode.patch", "", d)}'
+
 DEPENDS:append:a64 = " u-boot-tools-native"
 DEPENDS:append:rk3399 = " u-boot-tools-native python3-pyelftools-native"
 
