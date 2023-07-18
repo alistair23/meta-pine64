@@ -7,7 +7,7 @@ inherit kernel
 require recipes-kernel/linux/linux-yocto.inc
 
 LINUX_VERSION ?= "5.10"
-LINUX_VERSION_EXTENSION = "-mainline"
+LINUX_VERSION_EXTENSION = "-sunxi"
 KERNEL_VERSION_SANITY_SKIP="1"
 
 BRANCH = "linux-5.10.y"
