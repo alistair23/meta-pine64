@@ -68,6 +68,36 @@ MACHINE=pine-a64-plus bitbake core-image-base
 MACHINE=pine-rockpro64 bitbake core-image-base
 ```
 
+### Radxa Rock 5B PCIe Endpoint
+
+Add the following to your `local.conf` to ensure you are buildling the latest
+kernel.
+
+```shell
+PREFERRED_PROVIDER_virtual/kernel = "linux-yocto-dev"
+```
+
+Build the endpoint image for the board
+
+```shell
+MACHINE=radxa-rock5b-pcie-ep bitbake core-image-pcie
+```
+
+### Radxa Rock 5B
+
+Add the following to your `local.conf` to ensure you are buildling the latest
+kernel.
+
+```shell
+PREFERRED_PROVIDER_virtual/kernel = "linux-yocto-dev"
+```
+
+Build the host image for the board
+
+```shell
+MACHINE=radxa-rock5b bitbake core-image-pcie
+```
+
 ### Other Pine64 Boards
 
 Please raise a GitHub issue if you would like another board suppoted.

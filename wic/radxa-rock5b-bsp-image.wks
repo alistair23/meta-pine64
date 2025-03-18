@@ -1,0 +1,9 @@
+bootloader --ptable gpt
+
+part loader1 --align 32   --no-table --source rawcopy --sourceparams="file=idbloader.img"
+part loader2 --align 8192 --no-table --source rawcopy --sourceparams="file=u-boot.itb"
+
+part trust   --align 4    --no-table --source rawcopy --sourceparams="file=tee-rk3588.bin"
+
+part /boot --fstype=vfat --label boot   --source bootimg-partition --size=100M --active
+part / --source rootfs --fstype ext4 --part-name rootfs --uuid 614e0000-0000-4b53-8000-1d28000054a9 --mkfs-extraopts "-F -i 8192 -b 4096" --align 8192
