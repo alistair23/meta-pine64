@@ -1,0 +1,6 @@
+bootloader --ptable gpt
+
+part loader --align 32 --no-table --source rawcopy --sourceparams="file=u-boot-rockchip.bin"
+
+part /boot --offset 16777216 --ondisk mmcblk1 --fstype=vfat --label boot   --source bootimg-partition --size=1G --active
+part /     --align 4096      --ondisk mmcblk1 --fstype=ext4 --label rootfs --source=rootfs --uuid B921B045-1DF0-41C3-AF44-4C6F280D3FAE
