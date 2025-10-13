@@ -1,7 +1,11 @@
-FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/files:${THISDIR}/pt2-files:"
 
 SRC_URI:append:a64 = " \
     file://boot.cmd \
+    "
+
+SRC_URI:append:pine-pinetab2 = " \
+    file://disable_preconsole_buffer.cfg \
     "
 
 DEPENDS:append:a64 = " u-boot-tools-native"
@@ -28,7 +32,13 @@ EXTRA_OEMAKE:append:rk3588 = " \
 	BL31=${DEPLOY_DIR_IMAGE}/bl31-rk3588.elf \
 	ROCKCHIP_TPL=${DEPLOY_DIR_IMAGE}/ddr-rk3588.bin \
 	"
+EXTRA_OEMAKE:append:rk3566 = " \
+	BL31=${DEPLOY_DIR_IMAGE}/bl31-rk3566.elf \
+	ROCKCHIP_TPL=${DEPLOY_DIR_IMAGE}/ddr-rk3566.bin \
+	"
+
 ATF_DEPENDS:rk3588 = " rockchip-rkbin:do_deploy"
+ATF_DEPENDS:rk3566 = " rockchip-rkbin:do_deploy"
 
 do_compile[depends] .= "${ATF_DEPENDS}"
 
