@@ -14,6 +14,7 @@ S = "${WORKDIR}/git"
 
 COMPATIBLE_MACHINE = "^$"
 COMPATIBLE_MACHINE:rk3588 = "rk3588"
+COMPATIBLE_MACHINE:rk3566 = "rk3566"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
@@ -26,12 +27,20 @@ PACKAGES = "${PN}"
 ALLOW_EMPTY:${PN} = "1"
 
 do_deploy() {
-	# Prebuilt TF-A
-	install -m 644 ${S}/bin/rk35/rk3588_bl31_v*.elf ${DEPLOYDIR}/bl31-rk3588.elf
-	# Prebuilt OPTEE-OS
-	install -m 644 ${S}/bin/rk35/rk3588_bl32_v*.bin ${DEPLOYDIR}/tee-rk3588.bin
-	# Prebuilt U-Boot TPL (DDR init)
-	install -m 644 ${S}/bin/rk35/rk3588_ddr_lp4_2112MHz_lp5_2400MHz_v*.bin ${DEPLOYDIR}/ddr-rk3588.bin
+    if [ "${COMPATIBLE_MACHINE}" = "rk3588" ]; then
+        # Prebuilt TF-A
+        install -m 644 ${S}/bin/rk35/rk3588_bl31_v*.elf ${DEPLOYDIR}/bl31-rk3588.elf
+        # Prebuilt OPTEE-OS
+        install -m 644 ${S}/bin/rk35/rk3588_bl32_v*.bin ${DEPLOYDIR}/tee-rk3588.bin
+        # Prebuilt U-Boot TPL (DDR init)
+        install -m 644 ${S}/bin/rk35/rk3588_ddr_lp4_2112MHz_lp5_2400MHz_v*.bin ${DEPLOYDIR}/ddr-rk3588.bin
+    elif [ "${COMPATIBLE_MACHINE}" = "rk3566" ]; then
+        # Prebuilt TF-A
+        install -m 644 ${S}/bin/rk35/rk3568_bl31_v*.elf ${DEPLOYDIR}/bl31-rk3566.elf
+        # Not using OPTEE-OS for rk3566
+        # Prebuilt U-Boot TPL (DDR init)
+        install -m 644 ${S}/bin/rk35/rk3566_ddr_1056MHz_v*.bin ${DEPLOYDIR}/ddr-rk3566.bin
+    fi
 }
 
 addtask deploy after do_install
