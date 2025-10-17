@@ -12,6 +12,7 @@ SRC_URI = "git://codeberg.org/DanctNIX/linux-pinetab2.git;protocol=https;nobranc
            file://disable_drm_msm.cfg \
            file://screen.cfg \
            file://usb.cfg \
+           file://rockchip.cfg \
           "
 
 LINUX_VERSION ?= "6.16.9"
