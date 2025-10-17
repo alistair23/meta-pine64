@@ -8,14 +8,14 @@ require recipes-kernel/linux/linux-yocto.inc
 
 FILESEXTRAPATHS:prepend := "${THISDIR}/pt2-files:"
 
-SRC_URI = "git://github.com/dreemurrs-embedded/linux-pinetab2.git;protocol=https;nobranch=1 \
+SRC_URI = "git://codeberg.org/DanctNIX/linux-pinetab2.git;protocol=https;nobranch=1 \
            file://disable_drm_msm.cfg \
            file://screen.cfg \
            file://usb.cfg \
           "
 
-LINUX_VERSION ?= "6.15.2"
-DANCTNIX_VERSION ?= "2"
+LINUX_VERSION ?= "6.16.9"
+DANCTNIX_VERSION ?= "1"
 SRCREV = "v${LINUX_VERSION}-danctnix${DANCTNIX_VERSION}"
 PV = "${LINUX_VERSION}-danctnix${DANCTNIX_VERSION}"
 
