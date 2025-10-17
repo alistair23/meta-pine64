@@ -98,6 +98,12 @@ Build the host image for the board
 MACHINE=radxa-rock5b bitbake core-image-pcie
 ```
 
+### Pine PineTab2
+
+```
+MACHINE=pine-pinetab2 bitbake core-image-base
+```
+
 ### Other Pine64 Boards
 
 Please raise a GitHub issue if you would like another board suppoted.
