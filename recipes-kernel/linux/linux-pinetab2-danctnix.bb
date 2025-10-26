@@ -1,4 +1,4 @@
-DESCRIPTION = "Mainline Linux kernel with built-in wifi and USB support for PineTab2"
+DESCRIPTION = "Linux kernel fork with built-in wifi and USB support for PineTab2"
 SECTION = "kernel"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://${S}/COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
