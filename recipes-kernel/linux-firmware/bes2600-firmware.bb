@@ -14,7 +14,6 @@ COMPATIBLE_MACHINE="pine-pinetab2"
 do_install() {
     install -d ${D}${nonarch_base_libdir}/firmware
     cp -r ${S}/firmware/* ${D}${nonarch_base_libdir}/firmware/
-    install -m 0644 ${S}/LICENSE ${D}${nonarch_base_libdir}/firmware/LICENSE.bes2600
 }
 
 FILES:${PN} = "${nonarch_base_libdir}/firmware"
