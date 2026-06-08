@@ -9,7 +9,7 @@ SRCREV = "cd21914580fcfd5ca6eef0872de0fd2b28d81d41"
 
 S = "${WORKDIR}/git"
 
-COMPATIBLE_MACHINE="pine-pinetab2"
+COMPATIBLE_MACHINE = "pine-pinetab2"
 
 do_install() {
     install -d ${D}${nonarch_base_libdir}/firmware

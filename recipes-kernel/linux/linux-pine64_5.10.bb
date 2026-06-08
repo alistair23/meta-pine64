@@ -8,7 +8,7 @@ require recipes-kernel/linux/linux-yocto.inc
 
 LINUX_VERSION ?= "5.10"
 LINUX_VERSION_EXTENSION = "-mainline"
-KERNEL_VERSION_SANITY_SKIP="1"
+KERNEL_VERSION_SANITY_SKIP = "1"
 
 BRANCH = "linux-5.10.y"
 SRCREV = "${AUTOREV}"
@@ -30,7 +30,7 @@ SRC_URI = "git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git;branch
 KBUILD_DEFCONFIG:sopine-a64 = "defconfig"
 KBUILD_DEFCONFIG:pine-a64-lts = "defconfig"
 KBUILD_DEFCONFIG:pine-a64-plus = "defconfig"
-KCONFIG_MODE="--alldefconfig"
+KCONFIG_MODE = "--alldefconfig"
 
 COMPATIBLE_MACHINE = "pine-a64-lts|sopine-a64|pine-a64-plus"
 
